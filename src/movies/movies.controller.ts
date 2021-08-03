@@ -9,7 +9,7 @@ import {
     Query 
 } from '@nestjs/common';
 import { CreateMovieDto } from './dto/create-movie.dto';
-import { updateMovieDto } from './dto/update-movie.dto';
+import { UpdateMovieDto } from './dto/update-movie.dto';
 import { Movie } from './entities/movie.entity';
 import { MoviesService } from './movies.service';
 
@@ -29,7 +29,6 @@ export class MoviesController {
     
     @Get(':id') // 패스 파라미터
     getOne(@Param('id') movieId: number): Movie { // 패스파라미터를 인자로 받아서 변수에 저장
-        console.log(typeof movieId)
         return this.moviesService.getOne(movieId)
     }
 
@@ -44,7 +43,7 @@ export class MoviesController {
     }
 
     @Patch('/:id')
-    updateMovie(@Param('id') movieId: number, @Body() updateData: updateMovieDto) {
+    updateMovie(@Param('id') movieId: number, @Body() updateData: UpdateMovieDto) {
         return this.moviesService.update(movieId, updateData)
     }
 

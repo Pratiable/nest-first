@@ -1,11 +1,6 @@
+import { PartialType } from "@nestjs/mapped-types";
 import { IsNumber, IsString } from "class-validator";
+import { Z_PARTIAL_FLUSH } from "zlib";
+import { CreateMovieDto } from "./create-movie.dto";
 
-export class updateMovieDto{
-    @IsString()
-    title?: string
-    @IsNumber()
-    year?: number
-    @IsString({each:true})
-    genres?: string[]
-
-}
+export class UpdateMovieDto extends PartialType(CreateMovieDto) {}
